@@ -35,6 +35,24 @@ class BookControls extends Component {
     ],
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (
+      nextProps.currentlyEditingBook !== undefined &&
+      nextProps.currentlyEditingBook !== this.props.currentlyEditingBook
+    ) {    
+      const newFields = this.state.fields.map(field => {
+        return {
+          ...field,
+          value: nextProps.currentlyEditingBook[field.name],
+        }
+      });
+
+      this.setState({
+        fields: newFields,
+      });
+    }
+  }
+
   onFieldChange = (newValue, fieldName) => {
     const fieldIndex = this.state.fields.findIndex(field => {
       return field.name === fieldName;
@@ -56,13 +74,43 @@ class BookControls extends Component {
     });
   }
 
-  onBookAddClick = () => {
-    const bookData = this.state.fields.reduce((acc, field) => {
+  resetInputFields = () => {
+    const newFields = this.state.fields.map(field => {
+      return {
+        ...field,
+        value: '',
+      };
+    });
+
+    this.setState({
+      fields: newFields,
+    });
+  }
+
+  getBookData = () => {
+    return this.state.fields.reduce((acc, field) => {
       acc[field.name] = field.value;
       return acc;
     }, {});
+  }
+
+  onBookAddClick = () => {
+    const bookData = this.getBookData();
 
     this.props.addBook(bookData);
+    this.resetInputFields();
+  }
+
+  onBookEditingCancel = () => {
+    this.props.editingFail();
+    this.resetInputFields();
+  }
+
+  onBookEditingSuccess = () => {
+    const newBookData = this.getBookData();
+
+    this.props.editingSuccess(newBookData);
+    this.resetInputFields();
   }
 
   render() {
@@ -79,27 +127,53 @@ class BookControls extends Component {
       );
     });
 
-    return (
+    let bookControls = (
       <div>
+        <p>Add new book:</p>
         {fields}
         <Button
           fullWidth
           onClick={this.onBookAddClick}
         >
-          Add new book
-      </Button>
+          Add
+        </Button>
       </div>
     );
+
+    if (this.props.currentlyEditingBook) {
+      bookControls = (
+        <div>
+          <p>Edit book:</p>
+          {fields}
+          <Button
+            onClick={this.onBookEditingCancel}
+          >
+            Cancel
+          </Button>
+          <Button
+            onClick={this.onBookEditingSuccess}
+          >
+            Save
+          </Button>
+        </div>
+      );
+    }
+
+    return bookControls;
   }
 }
 
 
 const mapStateToProps = state => ({
-  isEditing: state.isEditing,
+  currentlyEditingBook: state.booksList.find(book => {
+    return book.id === state.currentlyEditingBookId
+  }),
 });
 
 const mapDispatchToProps = dispatch => ({
   addBook: (bookData) => dispatch(actionCreators.addBook(bookData)),
+  editingFail: () => dispatch(actionCreators.editingFail()),
+  editingSuccess: (newBookData) => dispatch(actionCreators.editingSucces(newBookData)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookControls);

@@ -25,7 +25,11 @@ const BookCard = props => {
         <p className={styles.BookCardText}>{data.pages}</p>
       </div>
       <div>
-        <Button>Edit</Button>
+        <Button
+          onClick={() => props.onEditingStart(data.id)}
+        >
+          Edit
+        </Button>
         <Button
           onClick={() => props.onBookRemove(data.id)}
         >

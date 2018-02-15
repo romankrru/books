@@ -1,5 +1,7 @@
 export {
   addBook,
-  editBook,
-  removeBook
+  removeBook,
+  editingStart,
+  editingSucces,
+  editingFail
 } from './books';

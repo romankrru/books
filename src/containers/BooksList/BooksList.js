@@ -12,6 +12,7 @@ const BooksList = props => {
         key={book.id}
         data={book}
         onBookRemove={props.onBookRemove}
+        onEditingStart={props.onEditingStart}
       />
     )
   });
@@ -32,6 +33,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onBookRemove: (bookId) => dispatch(actions.removeBook(bookId)),
+  onEditingStart: (bookId) => dispatch(actions.editingStart(bookId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BooksList);

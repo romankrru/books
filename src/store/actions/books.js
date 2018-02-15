@@ -19,9 +19,22 @@ export const removeBook = (id) => {
   };
 };
 
-export const editBook = (bookData) => {
+export const editingStart = (id) => {
   return {
-    type: actionTypes.EDIT_BOOK,
-    bookData,
+    type: actionTypes.EDITING_START,
+    id,
+  };
+};
+
+export const editingSucces = (newBookData) => {
+  return {
+    type: actionTypes.EDITING_SUCCES,
+    newBookData,
+  };
+};
+
+export const editingFail = () => {
+  return {
+    type: actionTypes.EDITING_FAIL,
   };
 };
