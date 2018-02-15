@@ -5,19 +5,7 @@ import List from '../../components/List/List';
 import BookCard from '../../components/BookCard/BookCard';
 
 const BooksList = props => {
-  console.log(props)
-
-  const booksMock = [
-    {
-      id: 1,
-      author: 'Book author',
-      name: 'book name',
-      year: '1923',
-      pages: '345'
-    }
-  ]
-
-  const books = booksMock.map(book => {
+  const books = props.booksList.map(book => {
     return (
       <BookCard
         key={book.id}
@@ -28,7 +16,10 @@ const BooksList = props => {
 
   return (
     <List>
-      {books}
+      { books.length ?
+        books :
+        'There are no books yet... Please add some.'
+      }
     </List>
   );
 };
