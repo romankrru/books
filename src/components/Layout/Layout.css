@@ -1,0 +1,13 @@
+.LayoutContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.AppNameHeading {
+  font-size: 48px;
+  font-weight: 300;
+}
+
+.LayoutContent {
+  display: flex;
+}
