@@ -1,9 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import List from '../../components/List/List';
 import BookCard from '../../components/BookCard/BookCard';
 
 const BooksList = props => {
+  console.log(props)
+
   const booksMock = [
     {
       id: 1,
@@ -30,4 +33,8 @@ const BooksList = props => {
   );
 };
 
-export default BooksList;
+const mapStateToProps = state => ({
+  booksList: state.booksList,
+});
+
+export default connect(mapStateToProps)(BooksList);

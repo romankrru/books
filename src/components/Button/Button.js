@@ -14,7 +14,10 @@ const Button = props => {
   }
 
   return (
-    <button className={attachedClasses.join(' ')}>
+    <button
+      className={attachedClasses.join(' ')}
+      onClick={props.onClick}
+    >
       {props.children}
     </button>
   );
