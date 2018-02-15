@@ -26,7 +26,11 @@ const BookCard = props => {
       </div>
       <div>
         <Button>Edit</Button>
-        <Button>Delete</Button> 
+        <Button
+          onClick={() => props.onBookRemove(data.id)}
+        >
+          Delete
+        </Button> 
       </div>
     </li>
   );

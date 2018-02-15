@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import * as actions from '../../store/actions';
 import List from '../../components/List/List';
 import BookCard from '../../components/BookCard/BookCard';
 
@@ -10,6 +11,7 @@ const BooksList = props => {
       <BookCard
         key={book.id}
         data={book}
+        onBookRemove={props.onBookRemove}
       />
     )
   });
@@ -28,4 +30,8 @@ const mapStateToProps = state => ({
   booksList: state.booksList,
 });
 
-export default connect(mapStateToProps)(BooksList);
+const mapDispatchToProps = dispatch => ({
+  onBookRemove: (bookId) => dispatch(actions.removeBook(bookId)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BooksList);

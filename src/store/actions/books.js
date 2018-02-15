@@ -12,10 +12,10 @@ export const addBook = (bookData) => {
   };
 };
 
-export const removeBook = (bookId) => {
+export const removeBook = (id) => {
   return {
     type: actionTypes.REMOVE_BOOK,
-    bookId,
+    id,
   };
 };
 

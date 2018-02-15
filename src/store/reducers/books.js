@@ -16,6 +16,15 @@ const reducer = (state = initialState, action) => {
         ],
       };
 
+    case actionTypes.REMOVE_BOOK:
+      return {
+        ...state,
+        booksList: state.booksList.filter(book => 
+          book.id !== action.id
+        ),
+      };
+        
+
     default:
       return state;
   }
