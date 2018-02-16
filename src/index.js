@@ -16,7 +16,9 @@ let composeEnhancers;
 const persistedBooksList = ls.load('booksList');
 
 if (process.env.NODE_ENV === 'development') {
+  /* eslint-disable no-underscore-dangle */
   composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  /* eslint-enable no-underscore-dangle */
 } else {
   composeEnhancers = compose;
 }
@@ -30,12 +32,10 @@ const store = createStore(
   composeEnhancers(),
 );
 
-store.subscribe(debounce(
-  () => {
-    const booksList = store.getState().booksList;
-    ls.save('booksList', booksList);
-  }
-), 200);
+store.subscribe(debounce(() => {
+  const { booksList } = store.getState();
+  ls.save('booksList', booksList);
+}), 200);
 
 const app = (
   <Provider store={store}>

@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './BookCard.css';
 import Button from '../Button/Button';
 
-const BookCard = props => {
+const BookCard = (props) => {
   const { data } = props;
 
   return (
@@ -34,10 +35,22 @@ const BookCard = props => {
           onClick={() => props.onBookRemove(data.id)}
         >
           Delete
-        </Button> 
+        </Button>
       </div>
     </li>
   );
+};
+
+BookCard.propTypes = {
+  onEditingStart: PropTypes.func.isRequired,
+  onBookRemove: PropTypes.func.isRequired,
+  data: PropTypes.shape({
+    author: PropTypes.string,
+    name: PropTypes.string,
+    year: PropTypes.string,
+    id: PropTypes.string,
+    pages: PropTypes.string,
+  }).isRequired,
 };
 
 export default BookCard;

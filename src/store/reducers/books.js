@@ -20,8 +20,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         booksList: state.booksList.filter(book =>
-          book.id !== action.id
-        ),
+          book.id !== action.id),
       };
 
     case actionTypes.EDITING_START:
@@ -34,14 +33,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentlyEditingBookId: null,
-      }
+      };
 
     case actionTypes.EDITING_SUCCES: {
       const { booksList } = state;
 
       const bookIndex = booksList.findIndex(book =>
-        book.id === state.currentlyEditingBookId
-      );
+        book.id === state.currentlyEditingBookId);
 
       return {
         ...state,
@@ -50,7 +48,7 @@ const reducer = (state = initialState, action) => {
           ...booksList.slice(0, bookIndex),
           {
             id: state.currentlyEditingBookId,
-            ...action.newBookData
+            ...action.newBookData,
           },
           ...booksList.slice(bookIndex + 1),
         ],

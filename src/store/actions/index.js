@@ -3,5 +3,5 @@ export {
   removeBook,
   editingStart,
   editingSucces,
-  editingFail
+  editingFail,
 } from './books';

@@ -15,7 +15,7 @@ export const load = (itemName) => {
 export const save = (itemName, item) => {
   try {
     const serializedItem = JSON.stringify(item);
-    
+
     localStorage.setItem(itemName, serializedItem);
   } catch (err) {
     console.error("Can't save item to localStorage:");
