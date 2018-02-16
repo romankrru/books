@@ -1,6 +1,6 @@
 import * as actionTypes from '../actions/actionTypes';
 
-const initialState = {
+export const initialState = {
   currentlyEditingBookId: null,
   booksList: [],
 };
@@ -48,7 +48,10 @@ const reducer = (state = initialState, action) => {
         currentlyEditingBookId: null,
         booksList: [
           ...booksList.slice(0, bookIndex),
-          action.newBookData,
+          {
+            id: state.currentlyEditingBookId,
+            ...action.newBookData
+          },
           ...booksList.slice(bookIndex + 1),
         ],
       };
