@@ -1,0 +1,19 @@
+.Logo {
+  display: flex;
+  align-items: center;
+  
+  color: #AFA376;
+}
+
+.LogoText {
+  margin: 0;
+  padding: 0;
+
+  font-size: 64px;
+  font-weight: 600;
+}
+
+.LogoImage {
+  width: 68px;
+  margin-right: 20px;
+}
