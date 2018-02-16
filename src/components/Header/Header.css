@@ -1,0 +1,29 @@
+.Header {
+  background-color: #27282D;
+}
+
+.HeaderInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 2%;
+  width: 90%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.GithubLink {
+  display: block;
+  width: 57px;
+  height: 48px;
+
+  font-size: 0;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../../assets/img/icons/github-character.svg');
+}
+
+.GithubLink:hover {
+  background-image: url('../../assets/img/icons/github-character-hover.svg');
+}

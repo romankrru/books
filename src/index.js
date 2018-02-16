@@ -13,8 +13,6 @@ import registerServiceWorker from './registerServiceWorker';
 
 let composeEnhancers;
 
-const persistedBooksList = ls.load('booksList');
-
 if (process.env.NODE_ENV === 'development') {
   /* eslint-disable no-underscore-dangle */
   composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -22,6 +20,8 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   composeEnhancers = compose;
 }
+
+const persistedBooksList = ls.load('booksList');
 
 const store = createStore(
   rootReducer,

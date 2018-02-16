@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './Layout.css';
+import Header from '../Header/Header';
 
 const Layout = props => (
-  <div className={styles.LayoutContainer}>
-    <h1 className={styles.AppNameHeading}>Books</h1>
-    <div className={styles.LayoutContent}>
-      {props.children}
+  <Fragment>
+    <Header />
+    <div className={styles.LayoutContainer}>
+      <h1 className={styles.AppNameHeading}>Books</h1>
+      <div className={styles.LayoutContent}>
+        {props.children}
+      </div>
     </div>
-  </div>
+  </Fragment>
 );
 
 Layout.defaultProps = {
