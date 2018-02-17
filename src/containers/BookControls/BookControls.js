@@ -71,7 +71,6 @@ class BookControls extends Component {
 
   onFieldChange = (newValue, fieldName) => {
     const fieldIndex = this.state.fields.findIndex(field => field.name === fieldName);
-
     const { fields } = this.state;
 
     const newFileds = [
@@ -88,22 +87,22 @@ class BookControls extends Component {
     });
   }
 
-  onBookAddClick = () => {
+  onFormSubmit = (e) => {
+    e.preventDefault();
+
     const bookData = this.getBookData();
 
-    this.props.addBook(bookData);
+    if (this.props.currentlyEditingBook) {
+      this.props.editingSuccess(bookData);
+    } else {
+      this.props.addBook(bookData);
+    }
+
     this.resetInputFields();
   }
 
   onBookEditingCancel = () => {
     this.props.editingFail();
-    this.resetInputFields();
-  }
-
-  onBookEditingSuccess = () => {
-    const newBookData = this.getBookData();
-
-    this.props.editingSuccess(newBookData);
     this.resetInputFields();
   }
 
@@ -136,53 +135,54 @@ class BookControls extends Component {
         placeholder={field.placeholder}
         value={field.value}
         onChange={this.onFieldChange}
+        required
       />
     ));
 
-    let bookControls = (
-      <div>
-        <h2>Add new book</h2>
-        {fields}
-        <Button
-          fullWidth
-          size="lg"
-          onClick={this.onBookAddClick}
-        >
-          Add
-        </Button>
-      </div>
+    let buttons = (
+      <Button
+        fullWidth
+        size="lg"
+        type="submit"
+      >
+        Add
+      </Button>
     );
 
     if (this.props.currentlyEditingBook) {
-      bookControls = (
-        <div>
-          <h2>Edit book:</h2>
-          {fields}
-          <div className={styles.ButtonsGroup}>
-            <Button
-              className={styles.ButtonsGroupButton}
-              onClick={this.onBookEditingCancel}
-              btnType="danger"
-              size="lg"
-            >
-              Cancel
-            </Button>
-            <Button
-              className={styles.ButtonsGroupButton}
-              onClick={this.onBookEditingSuccess}
-              size="lg"
-            >
-              Save
-            </Button>
-          </div>
+      buttons = (
+        <div className={styles.ButtonsGroup}>
+          <Button
+            className={styles.ButtonsGroupButton}
+            onClick={this.onBookEditingCancel}
+            btnType="danger"
+            size="lg"
+            type="button"
+          >
+            Cancel
+          </Button>
+          <Button
+            className={styles.ButtonsGroupButton}
+            size="lg"
+            type="submit"
+          >
+            Save
+          </Button>
         </div>
       );
     }
 
-    return bookControls;
+    return (
+      <div>
+        <h2>{this.props.currentlyEditingBook ? 'Add new book' : 'Edit book'}</h2>
+        <form onSubmit={this.onFormSubmit}>
+          {fields}
+          {buttons}
+        </form>
+      </div>
+    );
   }
 }
-
 
 const mapStateToProps = state => ({
   currentlyEditingBook: state.booksList.find(book => book.id === state.currentlyEditingBookId),
