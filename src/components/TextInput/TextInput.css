@@ -4,9 +4,15 @@
   width: 100%;
   margin-bottom: 12px;
 
-  font-size: 18px;
+  font-size: 1.125rem;
 
   border: 1px solid #fff;
+}
+
+@media screen and (max-width: 1100px) {
+  .TextInputLabel {
+    font-size: 1rem;
+  }
 }
 
 .TextInputLabel:last-child {
@@ -15,7 +21,7 @@
 
 .TextInputLabelText {
   width: 30%;
-  padding: 20px 30px;
+  padding: 1.25rem 1.87rem;
   
   color: #AFA376;
   font-weight: 600;
@@ -26,7 +32,7 @@
 
 .Input {
   width: 70%;
-  padding: 20px 30px;  
+  padding: 1.25rem 1.87rem;  
 
   font: inherit;
   color: #fff;

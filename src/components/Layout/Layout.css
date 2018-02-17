@@ -9,3 +9,9 @@
 .LayoutContent {
   display: flex;
 }
+
+@media screen and (max-width: 900px) {
+  .LayoutContent {
+    display: block;
+  }
+}

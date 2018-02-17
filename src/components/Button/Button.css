@@ -2,18 +2,23 @@
   position: relative;
   overflow: hidden;
 
-  padding: 14px 50px;
+  padding: 0.87rem 3.125rem;
   margin-right: 25px;
 
-  font: inherit;
+  font-size: 1.125rem;
   font-weight: 600;
   color: #AFA376;
-
 
   background-color: #fff;
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1100px) {
+  .Button {
+    font-size: 1rem;
+  }
 }
 
 .Button:disabled {

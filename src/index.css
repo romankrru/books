@@ -7,7 +7,7 @@
 body {
   margin: 0;
   padding: 0;
-  
+
   font-family: 'Roboto';
   
   background-color: #C8D7D4;
@@ -15,4 +15,14 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: #AFA376;
+}
+
+html {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 1100px) {
+  html {
+    font-size: 14px;
+  }
 }
