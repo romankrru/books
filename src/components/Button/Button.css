@@ -16,12 +16,22 @@
   cursor: pointer;
 }
 
+.Button:disabled {
+  color: #a5a5a5;
+
+  cursor: default;
+}
+
 .Button:last-child {
   margin-right: 0;
 }
 
 .Button:hover {
   outline: 2px solid #AFA376;
+}
+
+.Button:disabled:hover {
+  outline: none;
 }
 
 .ButtonDanger {
