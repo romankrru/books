@@ -18,7 +18,9 @@ export const save = (itemName, item) => {
 
     localStorage.setItem(itemName, serializedItem);
   } catch (err) {
+    /* eslint-disable no-console */
     console.error("Can't save item to localStorage:");
     console.error(err);
+    /* eslint-enable no-console */
   }
 };
