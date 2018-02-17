@@ -174,7 +174,7 @@ class BookControls extends Component {
 
     return (
       <div>
-        <h2>{this.props.currentlyEditingBook ? 'Add new book' : 'Edit book'}</h2>
+        <h2>{this.props.currentlyEditingBook ? 'Edit book' : 'Add new book'}</h2>
         <form onSubmit={this.onFormSubmit}>
           {fields}
           {buttons}
