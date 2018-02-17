@@ -4,7 +4,9 @@
   width: 100%;
   margin-bottom: 12px;
 
-  border: 1px solid #000;
+  font-size: 18px;
+
+  border: 1px solid #fff;
 }
 
 .TextInputLabel:last-child {
@@ -12,16 +14,22 @@
 }
 
 .TextInputLabelText {
-  padding: 14px;
-
-  border-right: 1px solid #000;
+  width: 30%;
+  padding: 20px 30px;
+  
+  color: #AFA376;
+  font-weight: 600;
+  text-align: center;
+  
+  background-color: #fff;
 }
 
 .Input {
-  width: 100%;
-  padding: 14px;
+  width: 70%;
+  padding: 20px 30px;  
 
   font: inherit;
+  color: #fff;
 
   background-color: transparent;
   border: none;
