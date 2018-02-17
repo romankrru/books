@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 import List from '../../components/List/List';
 import BookCard from '../../components/BookCard/BookCard';
+import Plug from '../../components/Plug/Plug';
 
 const BooksList = (props) => {
   const books = props.booksList.map(book => (
@@ -22,7 +23,9 @@ const BooksList = (props) => {
       <List>
         {books.length ?
           books :
-          'There are no books yet... Please add some.'
+          <Plug>
+            There are no books yet... Please add some.
+          </Plug>
         }
       </List>
     </Fragment>

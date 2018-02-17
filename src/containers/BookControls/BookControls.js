@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import styles from './BookControls.css';
 import * as actionCreators from '../../store/actions';
 import TextInput from '../../components/TextInput/TextInput';
 import Button from '../../components/Button/Button';
@@ -125,7 +126,7 @@ class BookControls extends Component {
   render() {
     const fields = this.state.fields.map((field, i) => (
       <TextInput
-        // indexes as key is safe in this situation
+        // indexes as keys are safe in this case
         /* eslint-disable react/no-array-index-key */
         key={i}
         /* eslint-enable react/no-array-index-key */
@@ -157,17 +158,23 @@ class BookControls extends Component {
         <div>
           <h2>Edit book:</h2>
           {fields}
-          <Button
-            onClick={this.onBookEditingCancel}
-            btnType="danger"
-          >
-            Cancel
-          </Button>
-          <Button
-            onClick={this.onBookEditingSuccess}
-          >
-            Save
-          </Button>
+          <div className={styles.ButtonsGroup}>
+            <Button
+              className={styles.ButtonsGroupButton}
+              onClick={this.onBookEditingCancel}
+              btnType="danger"
+              size="lg"
+            >
+              Cancel
+            </Button>
+            <Button
+              className={styles.ButtonsGroupButton}
+              onClick={this.onBookEditingSuccess}
+              size="lg"
+            >
+              Save
+            </Button>
+          </div>
         </div>
       );
     }

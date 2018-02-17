@@ -3,14 +3,25 @@ import PropTypes from 'prop-types';
 
 import styles from './Button.css';
 
-const Button = (props) => {
+const Button = ({
+  fullWidth,
+  size,
+  onClick,
+  btnType,
+  className,
+  ...props
+}) => {
   const attachedClasses = [styles.Button];
 
-  if (props.fullWidth) {
+  if (className.length) {
+    attachedClasses.push(className);
+  }
+
+  if (fullWidth) {
     attachedClasses.push(styles.ButtonFullWidth);
   }
 
-  switch (props.size) {
+  switch (size) {
     case 'lg':
       attachedClasses.push(styles.ButtonLg);
       break;
@@ -18,7 +29,7 @@ const Button = (props) => {
       break;
   }
 
-  switch (props.btnType) {
+  switch (btnType) {
     case 'danger':
       attachedClasses.push(styles.ButtonDanger);
       break;
@@ -26,11 +37,11 @@ const Button = (props) => {
       break;
   }
 
-
   return (
     <button
       className={attachedClasses.join(' ')}
-      onClick={props.onClick}
+      onClick={onClick}
+      {...props}
     >
       {props.children}
     </button>
@@ -43,6 +54,7 @@ Button.defaultProps = {
   children: '',
   size: '',
   btnType: '',
+  className: '',
 };
 
 Button.propTypes = {
@@ -51,6 +63,7 @@ Button.propTypes = {
   children: PropTypes.node,
   size: PropTypes.string,
   btnType: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Button;

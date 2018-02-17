@@ -1,0 +1,8 @@
+.ButtonsGroup {
+  display: flex;
+  justify-content: space-between; 
+}
+
+.ButtonsGroupButton {
+  width: 48%;
+}
