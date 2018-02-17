@@ -140,7 +140,7 @@ class BookControls extends Component {
 
     let bookControls = (
       <div>
-        <p>Add new book:</p>
+        <h2>Add new book</h2>
         {fields}
         <Button
           fullWidth
@@ -154,7 +154,7 @@ class BookControls extends Component {
     if (this.props.currentlyEditingBook) {
       bookControls = (
         <div>
-          <p>Edit book:</p>
+          <h2>Edit book:</h2>
           {fields}
           <Button
             onClick={this.onBookEditingCancel}

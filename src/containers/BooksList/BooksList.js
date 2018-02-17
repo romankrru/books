@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -17,12 +17,15 @@ const BooksList = (props) => {
   ));
 
   return (
-    <List>
-      { books.length ?
-        books :
-        'There are no books yet... Please add some.'
-      }
-    </List>
+    <Fragment>
+      <h2>List of books</h2>
+      <List>
+        {books.length ?
+          books :
+          'There are no books yet... Please add some.'
+        }
+      </List>
+    </Fragment>
   );
 };
 
