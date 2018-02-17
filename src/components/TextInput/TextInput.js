@@ -3,16 +3,24 @@ import PropTypes from 'prop-types';
 
 import styles from './TextInput.css';
 
-const TextInput = props => (
-  <label className={styles.TextInputLabel} htmlFor={props.id}>
-    <span className={styles.TextInputLabelText}>{props.label}</span>
+const TextInput = ({
+  id,
+  label,
+  value,
+  name,
+  onChange,
+  ...props
+}) => (
+  <label className={styles.TextInputLabel} htmlFor={id}>
+    <span className={styles.TextInputLabelText}>{label}</span>
     <input
-      id={props.id}
+      id={id}
       className={styles.Input}
-      value={props.value}
-      name={props.name}
-      onChange={e => props.onChange(e.target.value, props.name)}
+      value={value}
+      name={name}
+      onChange={e => onChange(e.target.value, name)}
       type="text"
+      {...props}
     />
   </label>
 );
