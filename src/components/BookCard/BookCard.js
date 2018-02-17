@@ -33,6 +33,7 @@ const BookCard = (props) => {
         </Button>
         <Button
           onClick={() => props.onBookRemove(data.id)}
+          btnType="danger"
         >
           Delete
         </Button>

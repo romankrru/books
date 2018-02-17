@@ -10,6 +10,23 @@ const Button = (props) => {
     attachedClasses.push(styles.ButtonFullWidth);
   }
 
+  switch (props.size) {
+    case 'lg':
+      attachedClasses.push(styles.ButtonLg);
+      break;
+    default:
+      break;
+  }
+
+  switch (props.btnType) {
+    case 'danger':
+      attachedClasses.push(styles.ButtonDanger);
+      break;
+    default:
+      break;
+  }
+
+
   return (
     <button
       className={attachedClasses.join(' ')}
@@ -22,14 +39,18 @@ const Button = (props) => {
 
 Button.defaultProps = {
   fullWidth: false,
-  onClick: () => {},
+  onClick: () => { },
   children: '',
+  size: '',
+  btnType: '',
 };
 
 Button.propTypes = {
   fullWidth: PropTypes.bool,
   onClick: PropTypes.func,
   children: PropTypes.node,
+  size: PropTypes.string,
+  btnType: PropTypes.string,
 };
 
 export default Button;

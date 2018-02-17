@@ -144,6 +144,7 @@ class BookControls extends Component {
         {fields}
         <Button
           fullWidth
+          size="lg"
           onClick={this.onBookAddClick}
         >
           Add
@@ -158,6 +159,7 @@ class BookControls extends Component {
           {fields}
           <Button
             onClick={this.onBookEditingCancel}
+            btnType="danger"
           >
             Cancel
           </Button>
