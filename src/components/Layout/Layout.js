@@ -8,7 +8,6 @@ const Layout = props => (
   <Fragment>
     <Header />
     <div className={styles.LayoutContainer}>
-      <h1 className={styles.AppNameHeading}>Books</h1>
       <div className={styles.LayoutContent}>
         {props.children}
       </div>
