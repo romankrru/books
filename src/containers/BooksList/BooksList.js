@@ -12,6 +12,7 @@ const BooksList = (props) => {
     <BookCard
       key={book.id}
       data={book}
+      isEditing={props.currentlyEditingBookId === book.id}
       onBookRemove={props.onBookRemove}
       onEditingStart={props.onEditingStart}
     />
@@ -34,6 +35,7 @@ const BooksList = (props) => {
 
 BooksList.defaultProps = {
   booksList: [],
+  currentlyEditingBookId: '',
 };
 
 BooksList.propTypes = {
@@ -45,10 +47,12 @@ BooksList.propTypes = {
     year: PropTypes.string,
     pages: PropTypes.string,
   })),
+  currentlyEditingBookId: PropTypes.string,
 };
 
 const mapStateToProps = state => ({
   booksList: state.booksList,
+  currentlyEditingBookId: state.currentlyEditingBookId,
 });
 
 const mapDispatchToProps = dispatch => ({

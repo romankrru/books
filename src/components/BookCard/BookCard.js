@@ -7,8 +7,14 @@ import Button from '../Button/Button';
 const BookCard = (props) => {
   const { data } = props;
 
+  const bookCardClasses = [styles.BookCard];
+
+  if (props.isEditing) {
+    bookCardClasses.push(styles.BookCardEditing);
+  }
+
   return (
-    <li className={styles.BookCard}>
+    <li className={bookCardClasses.join(' ')}>
       <div className={styles.BookCardRow}>
         <h4 className={styles.BookCardHeading}>Author:</h4>{' '}
         <p className={styles.BookCardText}>{data.author}</p>
@@ -28,8 +34,12 @@ const BookCard = (props) => {
       <div>
         <Button
           onClick={() => props.onEditingStart(data.id)}
+          disabled={props.isEditing}
         >
-          Edit
+          { props.isEditing ?
+            'Editing...' :
+            'Edit'
+          }
         </Button>
         <Button
           onClick={() => props.onBookRemove(data.id)}
@@ -42,6 +52,10 @@ const BookCard = (props) => {
   );
 };
 
+BookCard.defaultProps = {
+  isEditing: false,
+};
+
 BookCard.propTypes = {
   onEditingStart: PropTypes.func.isRequired,
   onBookRemove: PropTypes.func.isRequired,
@@ -52,6 +66,7 @@ BookCard.propTypes = {
     id: PropTypes.string,
     pages: PropTypes.string,
   }).isRequired,
+  isEditing: PropTypes.bool,
 };
 
 export default BookCard;
